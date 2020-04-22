@@ -16,9 +16,11 @@
         <div class="row">
 
             <div class="col-sm-4 search-column h-100">
-                <p>Search for a City:</p>
-                <input type="text" placeholder="City, State">
-                <button type="submit" class="btn btn-primary">Search</button>
+                <form id="user-form">
+                    <label for="user-location">Search for a City:</label>
+                    <input name="user-location" id="user-location" type="text" autofocus="true" class="form-input" placeholder="City,State" />
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </form>
             </div>
 
             <div class="col-sm-8">
@@ -26,7 +28,7 @@
                 <div class="container">
                     <div class="row current">
                       <div class="col-sm-12">
-                          <h1></h1>
+                          <h1></h1>s
                           <ul>
                               <li id="temp"></li>
                               <li id="humidity"></li>
