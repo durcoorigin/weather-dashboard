@@ -1,0 +1,28 @@
+header {
+    background-color: rgba(95, 110, 248, 0.788);
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0;
+
+}
+
+h1 {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0;
+
+}
+.search-column {
+    background-color: rgb(161, 161, 161);
+    padding: 0;
+    margin: 0;
+}
+
+.search-column input {
+    height: 40px;
+}
+
+h3 {
+    width: 100%;
+}
