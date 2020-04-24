@@ -1,11 +1,11 @@
 // ****** Global Variables ******
-var userFormEl = document.getElementById("user-form");
-var locationInputEl = document.getElementById("user-location");
+var userFormEl = document.querySelector("#user-form");
+var locationInputEl = document.querySelector("#user-location");
 
 
 // ****** Get weather information ******
 var getWeather = function(weatherLocation) {
-    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + weatherLocation + "&APPID=9b044363d4a76eaed9d4e095ae5fa465";
+    var apiUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=' + weatherLocation + '&units=imperial&appid=9b044363d4a76eaed9d4e095ae5fa465';
     
     fetch(apiUrl).then(function(response) {
         response.json().then(function(data){
@@ -13,22 +13,22 @@ var getWeather = function(weatherLocation) {
         });
     });
 };
-// debugger;
-// getWeather();
+
 
 // ****** Form Event Handler ******
 var formSubmitHandler = function(event) {
-    eventPreventDefault();
+    // debugger;
+
+    event.preventDefault();
     var weatherLocation = locationInputEl.value.trim();
 
     if (weatherLocation) {
-        getWeather(weatherLocation);
-        // locationInputEl.value = "";
+        locationInputEl.value = "";
     }
-    // else {
-    //     locationInputEl.value = "london,uk";
-    // }
-    console.log(weatherLocation);
+
+    // console.log(weatherLocation);
+    getWeather(weatherLocation);
+
 }
 
 
