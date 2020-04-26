@@ -4,7 +4,7 @@ var locationInputEl = document.querySelector("#user-location");
 
 
 // ****** Display weather forecast ******
-var displayWeather = function(data) {
+var displayWeather = function(data, uvToday) {
 
     // ****** Display Today's Weather ******
     
@@ -16,13 +16,14 @@ var displayWeather = function(data) {
     var getTodayIcon = data.list[0].weather[0].icon;
     let iconToday = document.getElementById('icon');
 
+
     document.getElementById("city").innerHTML = cityName;
     document.getElementById("date").innerHTML = dateToday;
     iconToday.setAttribute('src', 'http://openweathermap.org/img/wn/' + getTodayIcon + '@2x.png');
     document.getElementById("temp").innerHTML = tempToday;
     document.getElementById("humidity").innerHTML = humToday;
     document.getElementById("wind").innerHTML = windToday;
-    // document.getElementById("uvIndex").innerHTML = uvToday;
+    document.getElementById("uvIndex").innerHTML = uvToday;
 
     // ****** Display Tomorrow's Weather ******
 
@@ -92,23 +93,44 @@ var displayWeather = function(data) {
 };
 
 // ****** Get weather information ******
-var getWeather = function(weatherLocation) {
-    var apiUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=' + weatherLocation + '&units=imperial&appid=9b044363d4a76eaed9d4e095ae5fa465';
-    var uvIcon = 
+var getUv = function(data) {
+    var lat = data.city.coord.lat;
+    var long = data.city.coord.lon;
 
-    fetch(apiUrl).then(function(response) {
-        response.json().then(function(data) {
-
-        displayWeather(data);
+    var getUv = 'http://api.openweathermap.org/data/2.5/uvi?lat=' + lat + '&lon=' + long + '&appid=9b044363d4a76eaed9d4e095ae5fa465';
+    
+	fetch(getUv).then(function(response) {
+        response.json().then(function(uvData) {
+	
+        var uvToday = uvData.value
+        displayWeather(data, uvToday);
         });
     });
 
-  // Get WeatherIcons - try repeating the above function and push to displayWeather!! may create separate functions for additional pulls.
-
-  // Get WeatherUvIndex - try repeating the above function and push to displayWeather
-  //var weatherIcon = 'http://api.openweathermap.org/data/2.5/uvi?lat=37.75&lon=-122.37';
 };
 
+var getWeather = function(weatherLocation) {
+    var apiUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=' + weatherLocation + '&units=imperial&appid=9b044363d4a76eaed9d4e095ae5fa465';
+
+
+    fetch(apiUrl).then(function(response) {
+        response.json().then(function(data) {
+	getUv(data);
+
+        });
+    });
+
+};
+
+var createHistory = function(weatherLocation) {
+    var historyArr = [];
+    historyArr.push(weatherLocation);
+    localStorage.setItem("storeHistory", JSON.stringify(historyArr));
+    historyArr = JSON.parse(localStorage.getItem("storeHistory"));
+    console.log(historyArr);
+
+getWeather(weatherLocation)
+}
 
 // ****** Form Event Handler ******
 var formSubmitHandler = function(event) {
@@ -120,8 +142,7 @@ var formSubmitHandler = function(event) {
         locationInputEl.value = "";
     }
 
-    // console.log(weatherLocation);
-    getWeather(weatherLocation);
+    createHistory(weatherLocation);
 
 };
 
