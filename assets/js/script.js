@@ -19,7 +19,7 @@ var displayWeather = function(data, uvToday) {
 
     document.getElementById("city").innerHTML = cityName;
     document.getElementById("date").innerHTML = dateToday;
-    iconToday.setAttribute('src', 'http://openweathermap.org/img/wn/' + getTodayIcon + '@2x.png');
+    iconToday.setAttribute('src', 'https://openweathermap.org/img/wn/' + getTodayIcon + '@2x.png');
     document.getElementById("temp").innerHTML = tempToday;
     document.getElementById("humidity").innerHTML = humToday;
     document.getElementById("wind").innerHTML = windToday;
@@ -110,7 +110,7 @@ var getUv = function(data) {
     var lat = data.city.coord.lat;
     var long = data.city.coord.lon;
 
-    var getUv = 'http://api.openweathermap.org/data/2.5/uvi?lat=' + lat + '&lon=' + long + '&appid=9b044363d4a76eaed9d4e095ae5fa465';
+    var getUv = 'https://api.openweathermap.org/data/2.5/uvi?lat=' + lat + '&lon=' + long + '&appid=9b044363d4a76eaed9d4e095ae5fa465';
     
 	fetch(getUv).then(function(response) {
         response.json().then(function(uvData) {
@@ -123,7 +123,7 @@ var getUv = function(data) {
 };
 
 var getWeather = function(weatherLocation) {
-    var apiUrl = 'http://api.openweathermap.org/data/2.5/forecast?q=' + weatherLocation + '&units=imperial&appid=9b044363d4a76eaed9d4e095ae5fa465';
+    var apiUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + weatherLocation + '&units=imperial&appid=9b044363d4a76eaed9d4e095ae5fa465';
 
 
     fetch(apiUrl).then(function(response) {
