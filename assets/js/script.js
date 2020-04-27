@@ -122,14 +122,20 @@ var getWeather = function(weatherLocation) {
 
 };
 
-var createHistory = function(weatherLocation) {
-    var historyArr = [];
-    historyArr.push(weatherLocation);
-    localStorage.setItem("storeHistory", JSON.stringify(historyArr));
-    historyArr = JSON.parse(localStorage.getItem("storeHistory"));
-    console.log(historyArr);
 
-getWeather(weatherLocation)
+
+var createHistory = function(weatherLocation) {
+
+    if (weatherLocation) {
+        var city = localStorage.setItem("storeHistory", weatherLocation);
+        var button = document.createElement("button");
+        button.id = "history-btn";
+        button.value = localStorage.getItem("storeHistory");
+        button.innerHTML = localStorage.getItem("storeHistory");
+        document.getElementById("history").appendChild(button);
+    }
+
+    getWeather(weatherLocation);
 }
 
 // ****** Form Event Handler ******
@@ -150,3 +156,4 @@ var formSubmitHandler = function(event) {
 
 // ****** Event Listeners ******
 userFormEl.addEventListener("submit", formSubmitHandler);
+
