@@ -25,6 +25,19 @@ var displayWeather = function(data, uvToday) {
     document.getElementById("wind").innerHTML = windToday;
     document.getElementById("uvIndex").innerHTML = uvToday;
 
+    // ****** set background color for uvIndex ******
+
+        if (uvToday <= 4) {
+            document.getElementById("uvIndex").style.backgroundColor = "green";
+        }
+        else if (uvToday <= 8) {
+            document.getElementById("uvIndex").style.backgroundColor = "yellow";
+        }
+        else {
+            document.getElementById("uvIndex").style.backgroundColor = "red";
+        }
+    
+
     // ****** Display Tomorrow's Weather ******
 
     var dateTomorrow =  moment(data.list[7].dt_txt).format("MM/DD/YYYY");

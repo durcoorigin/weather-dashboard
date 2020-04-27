@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
 
 </head>
@@ -15,7 +16,8 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-sm-4 search-column h-100">
+            <!-- Search location by city -->
+            <div class="col-4 search-column h-100">
                 <form id="user-form">
                     <label for="user-location">Search for a City:</label>
                     <input name="user-location" id="user-location" type="text" autofocus="true" class="form-input" placeholder="City" />
@@ -23,20 +25,18 @@
                 </form>
 
                 <div id="history-container">
-                    <ul id="history">
-
-                    </ul>
+                    <ul id="history"></ul>
                 </div>
             </div>
 
-            <div class="col-sm-8">
+            <div class="col-8">
             
                 <div class="container">
                     <div class="row current">
                         <div class="col-sm-12">
-                            <h2 id="date"></h2>
                             <h2 id="city"></h2>
-		                    <img id="icon"></img>
+                            <h3 id="date"></h3>
+                            <img id="icon"></img>
                                 <p>Temperature: <span id="temp"></span>&#8457</p>
                                 <p>Humidity: <span id="humidity"></span>%</p>
                                 <p>Wind: <span id="wind"></span>mph</p>
@@ -47,35 +47,35 @@
                     <div class="row forecast">
                         <h3>5-Day Forecast:</h3>
 
-                        <div class="col-sm">
+                        <div class="col-2 days">
                                 <p id="date1"></p>
                                 <p> <img id="icon1"> </p>
                                 <p>Temperature: <span id="temp1"></span>&#8457</p>
                                 <p>Humidity: <span id="humidity1"></span>%</p>
                         </div>
 
-                        <div class="col-sm">
+                        <div class="col-2 days">
                                 <p id="date2"></p>
                                 <p> <img id="icon2"> </p>
                                 <p>Temperature: <span id="temp2"></span>&#8457</p>
                                 <p>Humidity: <span id="humidity2"></span>%</p>
                         </div>
 
-                        <div class="col-sm">
+                        <div class="col-2 days">
                                 <p id="date3"></p>
                                 <p> <img id="icon3"> </p>
                                 <p>Temperature: <span id="temp3"></span>&#8457</p>
                                 <p>Humidity: <span id="humidity3"></span>%</p>
                         </div>
 
-                        <div class="col-sm">
+                        <div class="col-2 days">
                                 <p id="date4"></p>
                                 <p> <img id="icon4"> </p>
                                 <p>Temperature: <span id="temp4"></span>&#8457</p>
                                 <p>Humidity: <span id="humidity4"></span>%</p>
                         </div>
 
-                        <div class="col-sm">
+                        <div class="col-2 days">
                                 <p id="date5"></p>
                                 <p> <img id="icon5"> </p>
                                 <p>Temperature: <span id="temp5"></span>&#8457</p>
@@ -91,7 +91,6 @@
       </div>
     
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
 <script src="./assets/js/script.js"></script>
 </body>

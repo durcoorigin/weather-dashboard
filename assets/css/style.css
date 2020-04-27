@@ -3,40 +3,70 @@
     margin: 0;
 }
 
+
+
 header {
-    background-color: rgba(95, 110, 248, 0.788);
-    padding: 0;
-    margin: 0;
-    margin-bottom: 0;
+    height: 200px;
+    vertical-align: middle;
 
 }
 
 h1 {
     text-align: center;
-    padding: 0;
-    margin: 0;
-    margin-bottom: 0;
-
+    vertical-align: middle;
+    font-weight: 800;
+    font-size: 70px;
+    padding-top: 65px;
 }
+
+
+
 .search-column {
     background-color: rgb(161, 161, 161);
-    padding: 0;
-    margin: 0;
+    width: 100%;
 }
 
-.search-column input {
+#user-location {
     height: 40px;
+    margin-top: 30px;
 }
 
 #history-btn {
     width: 100%;
     height: 50px;
+    font-weight: bold;
 }
 
-h3 {
+
+.current {
+    background-color: skyblue;
+
+}
+.current p {
+    font-weight: bolder;
+}
+
+
+.forecast {
+    background-color: skyblue;
+}
+
+.forecast p {
+    font-weight: bold;
+}
+
+.days {
+    background-color: rgba(255, 255, 0, 0.699);
+    margin: 10px;
+}
+
+h2 {
+    padding-top: 20px;
+}
+
+h2, h3 {
     width: 100%;
+    font-weight: bolder;
+    padding-left: 10px;
 }
 
-li {
-    list-style-type: none;
-}
